@@ -5,6 +5,10 @@
     ../../modules/home-manager/window-managers/hyprland
     ../../modules/home-manager/programs/firefox
     ../../modules/home-manager/programs/ghostty
+    ../../modules/home-manager/programs/waybar
+    ../../modules/home-manager/programs/rofi
+    ../../modules/home-manager/programs/zathura
+    ../../modules/home-manager/theming/gtk
   ];
   home.username = "evan";
   home.homeDirectory = "/home/evan";
@@ -66,10 +70,20 @@
     pciutils
     usbutils
     vulkan-tools
-    
+    acpi
+    ventoy
+
+    nerd-fonts.iosevka
+    nerd-fonts.iosevka-term
+    inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
+
     obsidian
+
     ungoogled-chromium
     inputs.zen-browser.packages.${system}.beta
+
+    box64
+    box86
   ];
 
   programs.git = {
@@ -86,6 +100,11 @@
   evan.windowManagers.hyprland.enable = true;
 
   evan.programs.ghostty.enable = true;
+  evan.programs.waybar.enable = true;
+  evan.programs.rofi.enable = true;
+  evan.programs.zathura.enable = true;
+
+  evan.theming.gtk.enable = true;
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage

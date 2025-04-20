@@ -16,6 +16,7 @@ with lib; {
     nix.settings.auto-optimise-store = true;
     nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "obsidian"
+	"idea-ultimate"
     ];
   };
 }

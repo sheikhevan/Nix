@@ -12,6 +12,10 @@ with lib; {
     };
   };
   config = mkIf config.evan.windowManagers.hyprland.enable {
+    home.packages = [
+      pkgs.swww
+    ];
+
     wayland.windowManager.hyprland = {
       enable = true;
       package = null;
@@ -19,15 +23,14 @@ with lib; {
       xwayland.enable = true;
       systemd.enable = true;
       extraConfig = ''
-	monitor=,preferred,auto,auto
+	monitor=eDP-1,3024x1890@60.00000,0x0,1.5
 	
 	$terminal = ghostty
 	$fileManager = dolphin
-	$menu = wofi --show drun
+	$menu = rofi -show drun
 	
-	# exec-once = $terminal
-	# exec-once = nm-applet &
-	# exec-once = waybar & hyprpaper & firefox
+	exec-once = swww-daemon & sleep 0.1 && swww img /home/evan/Pictures/Wallpapers/sea_wallpaper_03.jpg
+	exec-once = waybar
 	
 	env = XCURSOR_SIZE,24
 	env = HYPRCURSOR_SIZE,24
@@ -131,7 +134,7 @@ with lib; {
 	}
 	
 	gestures {
-	    workspace_swipe = false
+	    workspace_swipe = true
 	}
 	
 	$mainMod = SUPER
@@ -141,8 +144,7 @@ with lib; {
 	bind = $mainMod, M, exit,
 	bind = $mainMod, E, exec, $fileManager
 	bind = $mainMod, V, togglefloating,
-	bind = $mainMod, R, exec, $menu
-	bind = $mainMod, P, pseudo, # dwindle
+	bind = $mainMod, P, exec, $menu
 	bind = $mainMod, J, togglesplit, # dwindle
 	
 	bind = $mainMod, left, movefocus, l

@@ -14,6 +14,8 @@
       ../../modules/nixos/networking/firewall
       ../../modules/nixos/users/evan
       ../../modules/nixos/security/doas
+      ../../modules/nixos/security/madaidan-sysctl
+      ../../modules/nixos/security/madaidan-boot
       ../../modules/nixos/services/pipewire
       ../../modules/nixos/services/greetd
       ../../modules/nixos/programs/gnupg
@@ -37,6 +39,9 @@
     enable = true;
     users = ["evan"];
   };
+  evan.security.madaidan-sysctl.enable = true;
+  evan.security.madaidan-boot.enable = true;
+
 
   evan.services.pipewire.enable = true;
 
